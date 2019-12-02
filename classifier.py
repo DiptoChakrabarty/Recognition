@@ -11,14 +11,14 @@ def getImageWithID(path):
     count=0
     imagepath= [os.path.join(path,f) for f in os.listdir(path)]
     faces=[]
-    id=[]
+    ids=[]
     for img_path in imagepath:
         count=count+1
         faceimg=Image.open(img_path).convert('L')
         facenp=np.array(faceimg,'uint8')
         faces.append(facenp)
-        id.append(count)
-    return  faces,id
+        ids.append(int(id))
+    return  faces,ids
 
 faces,ids=getImageWithID(path)
 recognizer.train(faces,np.array(ids))
