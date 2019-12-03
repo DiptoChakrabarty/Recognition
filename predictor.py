@@ -16,8 +16,6 @@ while True:
         cv2.rectangle(photo,(x,y),(x+w,y+h),(0,0,255))
         id,conf=rec.predict(gray[y:y+h,x:x+w])
         if id==1:
-            id="dipto"
-        if id==2:
             id="Dipto"
         else:
             id="Unknown"
