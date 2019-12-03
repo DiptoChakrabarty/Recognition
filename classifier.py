@@ -4,7 +4,7 @@ import cv2
 from PIL import Image
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
-id=input("Give User ID : ")
+
 path='dataset/user{}'.format(id)
 
 def getImageWithID(path):

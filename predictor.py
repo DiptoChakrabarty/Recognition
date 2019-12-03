@@ -5,7 +5,7 @@ import os
 cap=cv2.VideoCapture(0)
 face=cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 rec=cv2.face.LBPHFaceRecognizer_create()
-rec.read("reco/trainingdata.yml")
+rec.read("reco/model.yml")
 id=0
 font=font = cv2.FONT_HERSHEY_SIMPLEX
 while True:
