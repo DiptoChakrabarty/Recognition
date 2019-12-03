@@ -17,6 +17,10 @@ while True:
         id,conf=rec.predict(gray[y:y+h,x:x+w])
         if id==1:
             id="Dipto"
+        elif id==2:
+            id="Vinnet"
+        elif id==3:
+            id="Ishan"
         else:
             id="Unknown"
         cv2.putText(photo,str(id),(x,y+h),cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), lineType=cv2.LINE_AA) 
