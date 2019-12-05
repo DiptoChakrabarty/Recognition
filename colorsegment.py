@@ -15,9 +15,11 @@ while True:
     mask=cv2.inRange(imgHsv,blue_lower,blue_upper)
     #morphology 
     #kernel opening removes small white patches (noise)
-    maskO=cv2.morphology(mask,cv2.MORPH_OPEN,kernel_open)
+    maskO=cv2.morphologyEx(mask,cv2.MORPH_OPEN,kernel_open)
     #kernel close removes small black patches (noise) 
-    maskC=cv2.morphology(mask,cv2.MORPH_CLOSE,kernel_close)
+    maskC=cv2.morphologyEx(mask,cv2.MORPH_CLOSE,kernel_close)
+    conts,h=cv2.findContours(maskC,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
+    cv2.drawContours(img,conts,-1,(0,0,255),4)
     cv2.imshow("close",maskC)
     cv2.imshow("open",maskO)
     cv2.imshow("HSV",mask)
