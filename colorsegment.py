@@ -20,6 +20,10 @@ while True:
     maskC=cv2.morphologyEx(mask,cv2.MORPH_CLOSE,kernel_close)
     conts,h=cv2.findContours(maskC,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
     cv2.drawContours(img,conts,-1,(0,0,255),4)
+    for i in range(len(conts)):
+        x,y,w,h=cv2.boundingRect(conts[i])   #Retreives boundary
+        cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),2)
+        cv2.putText(img,str(i+1),(x,y+h),cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 255), lineType=cv2.LINE_AA)
     cv2.imshow("close",maskC)
     cv2.imshow("open",maskO)
     cv2.imshow("HSV",mask)
