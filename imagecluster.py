@@ -15,7 +15,7 @@ photo2=photo.reshape(x*y,z)
 
 
 #Use Kmeans
-cluster = KMeans(n_clusters=7)
+cluster = KMeans(n_clusters=3)
 cluster.fit(photo2)
 centers= cluster.cluster_centers_
 labels= cluster.labels_
