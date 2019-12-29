@@ -1,5 +1,5 @@
 import cv2
-from sklearn.cluster import Kmeans
+from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 cap = cv2.VideoCapture(0)
 ret,photo = cap.read()
@@ -8,12 +8,13 @@ cv2.waitKey()
 cv2.destroyAllWindows()
 cap.release()
 # Reshape Image
+photo=cv2.cvtColor(photo,cv2.COLOR_BGR2GRAY)
 x,y,z=photo.shape
 photo2=photo.reshape(x*y,z)
 
 
 #Use Kmeans
-cluster = Kmeans(n_cluster=7)
+cluster = KMeans(n_clusters=7)
 cluster.fit(photo2)
 centers= cluster.cluster_centers_
 labels= cluster.labels_
