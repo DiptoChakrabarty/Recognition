@@ -20,7 +20,7 @@ rgb=rgb.reshape(x*y,z)
 #Use Kmeans
 rgb=np.float32(rgb)
 criteria=(cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER,10,1.0)
-K=3
+K=7
 attempts=10
 ret,label,center=cv2.kmeans(rgb,K,None,criteria,attempts,cv2.KMEANS_PP_CENTERS)
 

@@ -6,15 +6,12 @@ from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 
 
-path= 'dataset'.format(id)
+path= 'dataset/all'
 
 def getImageWith(path):
     
-    imagepath= [os.path.join(path,f) for f in os.listdir(path)]
-    #print(imagepath)
     faces=[]
-   # ids=[]
-    for path_name in imagepath:
+    for path_name in path:
         #print(path_name)
       #  id=path_name.split('/')[1][-1]
         
@@ -31,7 +28,7 @@ def getImageWith(path):
 
 #getImageWithID(path)
 
-faces=getImageWith(path)
+'''faces=getImageWith(path)
 faces=np.array(faces)
 cluster = KMeans(n_clusters=3)
 cluster.fit(faces)
@@ -41,4 +38,4 @@ labels= cluster.labels_
 
 #check the clusters
 plt.scatter(faces[:,0], faces[:,1], c=labels, cmap='rainbow')
-plt.scatter(centers[:,0] ,centers[:,1], color='black')
+plt.scatter(centers[:,0] ,centers[:,1], color='black')'''
