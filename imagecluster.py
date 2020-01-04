@@ -19,10 +19,20 @@ rgb=rgb.reshape(x*y,z)
 #Use Kmeans
 rgb=np.float32(rgb)
 criteria=(cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER,10,1.0)
+K=3
+attempts=10
+ret,label,center=cv2.kmeans(rgb,K,None,criteria,attempts,cv2.KMEANS_PP_CENTERS)
 
 
+#Plotting images
+center=np.uint8(center)
+res=center[label.flatten()]
+result_image=res.reshape((photo.shape))
 
-#plot image
-
-plt.figure(figsize=(15,8))
-plt.imshow((centers[labels].reshape(x,y,z)*255).astype(np.uint8))
+figure_size = 15
+plt.figure(figsize=(figure_size,figure_size))
+plt.subplot(1,2,1),plt.imshow(photo)
+plt.title('Original Image'), plt.xticks([]), plt.yticks([])
+plt.subplot(1,2,2),plt.imshow(res)
+plt.title('Segmented Image when K = %i' % K), plt.xticks([]), plt.yticks([])
+plt.show()
