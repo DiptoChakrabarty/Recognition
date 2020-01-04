@@ -2,12 +2,13 @@ import cv2
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 import numpy as np
-cap = cv2.VideoCapture(0)
+'''cap = cv2.VideoCapture(0)
 ret,photo = cap.read()
 cv2.imshow("photo",photo)
 cv2.waitKey()
 cv2.destroyAllWindows()
-cap.release()
+cap.release()'''
+photo=cv2.imread("/home/chuck/Downloads/download.png")
 # Reshape Image
 #photo=cv2.cvtColor(photo,cv2.COLOR_BGR2GRAY)
 rgb=cv2.cvtColor(photo,cv2.COLOR_BGR2RGB)
@@ -33,6 +34,6 @@ figure_size = 15
 plt.figure(figsize=(figure_size,figure_size))
 plt.subplot(1,2,1),plt.imshow(photo)
 plt.title('Original Image'), plt.xticks([]), plt.yticks([])
-plt.subplot(1,2,2),plt.imshow(res)
+plt.subplot(1,2,2),plt.imshow(result_image)
 plt.title('Segmented Image when K = %i' % K), plt.xticks([]), plt.yticks([])
 plt.show()
