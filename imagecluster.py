@@ -10,15 +10,17 @@ cv2.destroyAllWindows()
 cap.release()
 # Reshape Image
 #photo=cv2.cvtColor(photo,cv2.COLOR_BGR2GRAY)
-x,y,z=photo.shape
-photo2=photo.reshape(x*y,z)
+rgb=cv2.cvtColor(photo,cv2.COLOR_BGR2RGB)
+
+x,y,z=rgb.shape
+rgb=rgb.reshape(x*y,z)
 
 
 #Use Kmeans
-cluster = KMeans(n_clusters=3)
-cluster.fit(photo2)
-centers= cluster.cluster_centers_
-labels= cluster.labels_
+rgb=np.float32(rgb)
+criteria=(cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER,10,1.0)
+
+
 
 #plot image
 
