@@ -40,9 +40,11 @@ print(type(faces))
 
 print(faces.shape)
 print(faces[0].shape)
+x,y,z=faces[0].shape
 
 faces=faces.reshape(len(faces),-1)
 faces=faces.astype(float)/255.0
+
 print(faces.shape)
 print(faces[0].shape)
 
@@ -62,3 +64,10 @@ print([list(labels).count(i) for i in range(max(labels)+1)])
 
 plt.scatter(faces[:,0], faces[:,1], c=labels, cmap='rainbow')
 plt.scatter(centers[:,0] ,centers[:,1], color='black')
+
+
+cv2.imshow("cluster1",centers[0].reshape(x,y,z))
+cv2.imshow("cluster2",centers[1].reshape(x,y,z))
+cv2.imshow("cluster3",centers[2].reshape(x,y,z))
+cv2.waitKey(0)
+cv2.destroyAllWindows()
