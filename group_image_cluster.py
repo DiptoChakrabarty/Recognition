@@ -2,7 +2,7 @@ import os
 import numpy as np 
 import cv2
 import pandas as pd
-from PIL import Image
+import keras
 from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
@@ -42,6 +42,20 @@ print(faces.shape)
 print(faces[0].shape)
 x,y,z=faces[0].shape
 
+
+
+
+# Load Vgg Models to transform into more meaningful representations
+
+vgg16_model = keras.applications.vgg16.VGG16(include_top=False, weights="imagenet", input_shape=(224,224,3))
+
+vgg19_model = keras.applications.vgg19.VGG19(include_top=False, weights="imagenet", input_shape=(224,224,3))
+
+resnet50_model = keras.applications.resnet50.ResNet50(include_top=False, weights="imagenet", input_shape=(224,224,3)
+
+
+# Change shape od images
+
 faces=faces.reshape(len(faces),-1)
 faces=faces.astype(float)/255.0
 
@@ -49,7 +63,7 @@ print(faces.shape)
 print(faces[0].shape)
 
 
-
+# Code of KMeans
 
 
 cluster = KMeans(n_clusters=3)
