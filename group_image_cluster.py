@@ -56,15 +56,31 @@ resnet50_model = keras.applications.resnet50.ResNet50(include_top=False, weights
 
 # Change shape od images
 
-faces=faces.reshape(len(faces),-1)
-faces=faces.astype(float)/255.0
+def order_change(faces):
+    faces=faces.reshape(len(faces),-1)
+    faces=faces.astype(float)/255.0
 
-print(faces.shape)
-print(faces[0].shape)
+    print(faces.shape)
+    print(faces[0].shape)
 
+    return faces
+
+
+# Function for models change image
+
+def models_transform(model,images):
+
+    pred=model.predict(images)
+
+    flat = pred.reshape(images.shape[0]*images.shape[1],-1)
+
+    return flat
 
 # Code of KMeans
 
+
+
+faces=order_change(faces)
 
 cluster = KMeans(n_clusters=3)
 cluster.fit(faces)
