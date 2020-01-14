@@ -93,11 +93,18 @@ print("ResNet50 flattened output has {} features".format(resnet50_output.shape[1
 
 
 faces=order_change(faces)
-
 cluster = KMeans(n_clusters=3)
-cluster.fit(faces)
-centers= cluster.cluster_centers_
-labels= cluster.labels_
+
+def K_cluster(cluster,faces):
+
+    start=time.time()
+    cluster.fit(faces)
+    end=time.time()
+    print("Total Time Needed was",end-start)
+    return cluster
+
+    centers= cluster.cluster_centers_
+    labels= cluster.labels_
 
 
 #check the clusters
