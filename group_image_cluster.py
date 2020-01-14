@@ -47,11 +47,12 @@ x,y,z=faces[0].shape
 
 # Load Vgg Models to transform into more meaningful representations
 
-vgg16_model = keras.applications.vgg16.VGG16(include_top=False, weights="imagenet", input_shape=(224,224,3))
+vgg16_model = keras.applications.vgg16.VGG16(include_top=False, weights="imagenet", input_shape=(x,y,z))
 
-vgg19_model = keras.applications.vgg19.VGG19(include_top=False, weights="imagenet", input_shape=(224,224,3))
+vgg19_model = keras.applications.vgg19.VGG19(include_top=False, weights="imagenet", input_shape=(x,y,z))
 
-resnet50_model = keras.applications.resnet50.ResNet50(include_top=False, weights="imagenet", input_shape=(224,224,3)
+resnet50_model = keras.applications.resnet50.ResNet50(include_top=False, weights="imagenet", input_shape=(x,y,z))
+
 
 
 # Change shape od images
@@ -76,7 +77,18 @@ def models_transform(model,images):
 
     return flat
 
-# Code of KMeans
+
+
+vgg16_output = covnet_transform(vgg16_model, faces)
+print("VGG16 flattened output has {} features".format(vgg16_output.shape[1]))
+
+vgg19_output = covnet_transform(vgg19_model, faces)
+print("VGG19 flattened output has {} features".format(vgg19_output.shape[1]))
+
+resnet50_output = covnet_transform(resnet50_model, faces)
+print("ResNet50 flattened output has {} features".format(resnet50_output.shape[1]))
+
+# Code of KMeans clustering
 
 
 
