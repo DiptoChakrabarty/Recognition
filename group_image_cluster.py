@@ -55,7 +55,7 @@ resnet50_model = keras.applications.resnet50.ResNet50(include_top=False, weights
 
 
 
-# Change shape od images
+# Change shape of images
 
 def order_change(faces):
     faces=faces.reshape(len(faces),-1)
@@ -92,8 +92,7 @@ print("ResNet50 flattened output has {} features".format(resnet50_output.shape[1
 
 
 
-faces=order_change(faces)
-cluster = KMeans(n_clusters=3)
+
 
 def K_cluster(cluster,faces):
 
@@ -103,8 +102,16 @@ def K_cluster(cluster,faces):
     print("Total Time Needed was",end-start)
     return cluster
 
-    centers= cluster.cluster_centers_
-    labels= cluster.labels_
+
+print("Case of vgg16 output")
+
+faces=order_change(vgg16_output)
+cluster = KMeans(n_clusters=3)
+
+cluster=K_cluster(cluster,faces)
+
+centers= cluster.cluster_centers_
+labels= cluster.labels_
 
 
 #check the clusters
